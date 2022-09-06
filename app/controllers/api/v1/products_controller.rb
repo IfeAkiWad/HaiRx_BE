@@ -1,4 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
+    before_action :set_product, only: [:show, :index]
 
     def index 
         @products = Product.all

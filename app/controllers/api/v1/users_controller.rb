@@ -47,6 +47,6 @@ class Api::V1::UsersController < ApplicationController
       end
  
      def user_params
-       params.require(:user).permit( :username, :password, :name, :email)
+       params.require(:user).permit( :username, :password, :name, :email, subscriptions_attribute: [:frequency])
      end
 end

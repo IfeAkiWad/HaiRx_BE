@@ -1,6 +1,7 @@
 class Api::V1::SubscriptionsController < ApplicationController
     before_action :set_subscription, only: [:show, :index, :update, :delete]
     before_action :set_user, :set_product
+    skip_before_action :authorized
 
     def index 
         @subscriptions = Subscription.all
@@ -8,6 +9,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
 
     def show
+        find_subscription
         render json: @subscription, except: [:created_at, :updated_at]
     end
 
@@ -29,6 +31,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
 
     def destroy
+        find_subscription
         @subscription.destroy
         render json: {message: "Successfully deleted #{@product.name}!"}
     end
@@ -37,6 +40,10 @@ class Api::V1::SubscriptionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_subscription
       @subscription = Subscription.where(params[:id])
+    end
+
+    def find_subscription
+        @subscription = Subscription.find(params[:id])
     end
 
     def set_user

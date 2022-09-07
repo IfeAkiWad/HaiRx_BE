@@ -4,7 +4,7 @@ class Api::V1::SubscriptionsController < ApplicationController
     # skip_before_action :authorized
 
     def index 
-        @subscriptions = Subscription.all
+        @subscriptions = current_user.subscriptions.all
         render json: @subscriptions, except: [:created_at, :updated_at]
     end
 

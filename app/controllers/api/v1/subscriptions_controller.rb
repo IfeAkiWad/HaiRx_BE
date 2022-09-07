@@ -1,7 +1,7 @@
 class Api::V1::SubscriptionsController < ApplicationController
     before_action :set_subscription, only: [:show, :index, :update, :delete]
     before_action :set_user, :set_product
-    skip_before_action :authorized
+    # skip_before_action :authorized
 
     def index 
         @subscriptions = Subscription.all

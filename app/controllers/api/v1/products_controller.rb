@@ -8,7 +8,8 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def show
-        render json: @product, except: [:created_at, :updated_at]    end
+        render json: @product, except: [:created_at, :updated_at]    
+    end
 
     private
     # Use callbacks to share common setup or constraints between actions.

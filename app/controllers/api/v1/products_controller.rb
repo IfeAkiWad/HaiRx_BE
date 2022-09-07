@@ -1,22 +1,23 @@
 class Api::V1::ProductsController < ApplicationController
     before_action :set_product, only: [:show, :index]
+    before_action :set_user
 
     def index 
         @products = Product.all
+        render json: @products, except: [:created_at, :updated_at]
     end
 
     def show
-        @product = Product.find(params[:id])
-    end
+        render json: @product, except: [:created_at, :updated_at]    end
 
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      product = Product.where(params[:id])
+      @product = Product.where(params[:id])
     end
 
     def set_user
-      user = User.find_by(params[:user_id]) 
+      @user = User.find_by(params[:user_id]) 
     end
 
     # Only allow a list of trusted parameters through.

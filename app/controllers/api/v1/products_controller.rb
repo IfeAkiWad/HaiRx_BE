@@ -1,6 +1,8 @@
 class Api::V1::ProductsController < ApplicationController
     before_action :set_product, only: [:show, :index]
     before_action :set_user
+    skip_before_action :authorized
+
 
     def index 
         @products = Product.all

@@ -19,6 +19,18 @@ class Api::V1::AuthController < ApplicationController
         end
     end
 
+    def omniauth
+        # binding.pry
+        user = User.from_omniauth(auth)
+        # binding.pry
+        if user.valid?
+          session[:user_id] = user.id
+          redirect_to doctors_path
+        else
+          redirect_to login_path
+        end
+    end
+
     private
 
     def user_login_params

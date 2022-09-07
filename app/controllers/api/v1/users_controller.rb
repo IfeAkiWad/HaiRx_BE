@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, except: [:auto_login]
+  before_action :set_user, except: [:update, :delete]
+  skip_before_action :authorized, except: [:auto_login]
 
     def index
      user = User.all 
@@ -36,6 +37,10 @@ class Api::V1::UsersController < ApplicationController
    end
  
    private
+
+      def set_user
+        @user = User.find_by(params[:user_id]) 
+      end
  
      def user_params
        params.require(:user).permit( :username, :password, :name, :email)

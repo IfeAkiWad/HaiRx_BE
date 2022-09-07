@@ -24,10 +24,17 @@ class Api::V1::AuthController < ApplicationController
         user = User.from_omniauth(auth)
         # binding.pry
         if user.valid?
-          session[:user_id] = user.id
-          redirect_to doctors_path
+            token = encode_token({ user_id: @user.id })
+            render json: {
+                user: UserSerializer.new(@user),
+                jwt: token,
+            },
+            status: :accepted
         else
-          redirect_to login_path
+            render json: {
+                message: 'Invalid username or password',
+            },
+            status: :unauthorized
         end
     end
 

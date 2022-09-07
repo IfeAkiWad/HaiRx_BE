@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products, only: [:index, :show] 
       resources :subscriptions 
-      resources :users, only: [:create]
+      resources :users, only: [:create, :index]
       post '/login', to: 'users#login'
       get "/auto_login", to: "users#auto_login"
     end

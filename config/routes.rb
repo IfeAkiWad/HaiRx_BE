@@ -7,8 +7,12 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :index, :show] do
         resources :subscriptions 
       end
+      
       post '/login', to: 'users#login'
       get "/auto_login", to: "users#auto_login"
+
+      # get '/auth/google_oauth2/callback', to: 'auth#omniauth'
+      get '/auth/:provider/callback', to: 'auth#omniauth'
     end
   end
 

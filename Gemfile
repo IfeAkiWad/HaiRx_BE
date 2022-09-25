@@ -16,9 +16,9 @@ gem 'puma', '~> 4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
+# gem 'omniauth'
+# gem 'omniauth-google-oauth2'
+# gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
 # Use Active Storage variant

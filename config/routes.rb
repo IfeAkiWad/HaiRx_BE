@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get "/auto_login", to: "users#auto_login"
 
       # get '/auth/google_oauth2/callback', to: 'auth#omniauth'
-      get '/auth/:provider/callback', to: 'auth#omniauth'
+      # get '/auth/:provider/callback', to: 'auth#omniauth'
     end
   end
 

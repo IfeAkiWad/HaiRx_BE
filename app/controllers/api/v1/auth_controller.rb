@@ -1,3 +1,5 @@
+require 'pry'
+
 class Api::V1::AuthController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
@@ -19,24 +21,24 @@ class Api::V1::AuthController < ApplicationController
         end
     end
 
-    def omniauth
-        # binding.pry
-        user = User.from_omniauth(auth)
-        # binding.pry
-        if user.valid?
-            token = encode_token({ user_id: @user.id })
-            render json: {
-                user: UserSerializer.new(@user),
-                jwt: token,
-            },
-            status: :accepted
-        else
-            render json: {
-                message: 'Invalid username or password',
-            },
-            status: :unauthorized
-        end
-    end
+    # def omniauth
+    #     binding.pry
+    #     user = User.from_omniauth(auth)
+    #     # binding.pry
+    #     if user.valid?
+    #         token = encode_token({ user_id: @user.id })
+    #         render json: {
+    #             user: UserSerializer.new(@user),
+    #             jwt: token,
+    #         },
+    #         status: :accepted
+    #     else
+    #         render json: {
+    #             message: 'Invalid username or password',
+    #         },
+    #         status: :unauthorized
+    #     end
+    # end
 
     private
 

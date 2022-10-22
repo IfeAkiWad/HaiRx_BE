@@ -1,6 +1,6 @@
-class Api::V1::ProductsController < ApplicationController
+class ProductsController < ApplicationController
     before_action :set_product, only: [:show, :index]
-    before_action :set_user
+    # before_action :set_user
     skip_before_action :authorized
 
 
@@ -16,7 +16,7 @@ class Api::V1::ProductsController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find_by(params[:id])
     end
 
     def set_user

@@ -1,4 +1,4 @@
-class Api::V1::SubscriptionsController < ApplicationController
+class SubscriptionsController < ApplicationController
     before_action :set_subscription, only: [:show, :index, :update, :destroy]
     before_action :set_user, :set_product
     # skip_before_action :authorized

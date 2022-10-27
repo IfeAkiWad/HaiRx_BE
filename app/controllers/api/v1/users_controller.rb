@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :set_user, except: [:update, :delete]
   skip_before_action :authorized, except: [:auto_login]
 

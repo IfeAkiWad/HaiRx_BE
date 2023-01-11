@@ -23,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
     end
  
    def login
-     user = User.find_by(username: params[:user][:username])
+     user = User.find_by(email: params[:user][:email])
  
      if user && user.authenticate(params[:user][:password])
        
@@ -47,6 +47,6 @@ class Api::V1::UsersController < ApplicationController
       end
  
      def user_params
-       params.require(:user).permit( :username, :password, :name, :email, subscriptions_attribute: [:frequency])
+       params.require(:user).permit( :password, :email, subscriptions_attribute: [:frequency])
      end
 end

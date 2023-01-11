@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
       
        render json: {user: user, jwt: token}
      else
-       render json: {error: "Invalid username or password"}
+       render json: {error: "Invalid Email or password"}
      end
    end
  

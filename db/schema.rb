@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_170835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "uid"
+    t.text "password"
     t.string "provider"
   end
 

@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, except: [:update, :delete]
+  before_action :set_user
   skip_before_action :authorized, except: [:auto_login]
 
     def index
@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
      if user.valid?
        payload = {user_id: user.id}
        token = encode_token(payload)
-        render json: {user: user, jwt: token},status: :created
+       render json: {user: user, jwt: token},status: :created
      else
        render json: {errors: user.errors.full_messages}
      end
@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApplicationController
         payload = {user_id: user.id}
        token = encode_token(payload)
       
-       render json: {user: user, jwt: token}
+      render json: {user: user, jwt: token}
      else
        render json: {error: "Invalid Email or password"}
      end

@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_many :subscriptions
     has_many :products, through: :subscriptions
     validates :email, presence: true, uniqueness: true
-    validates :password, presence: true, uniqueness: true
+    # validates :password, presence: true, uniqueness: true
     accepts_nested_attributes_for :subscriptions
     has_secure_password
 
